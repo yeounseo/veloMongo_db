@@ -1,0 +1,33 @@
+소개 , 설치 및 데이터 모델링
+
+소개 
+MongoDB 는 C++ 로 작성된 오픈소스 문서지향(Document-Oriented) 적 Cross-platform 데이터 베이스 이며, 뛰어난 확장성과 성능을 자랑한다. 또한 현존하는 NoSQL데이터베이스 중 인지도 1위를 유지하고 있다.
+
+NoSQL ?
+흔히 NoSQL이라고 해서, SQL이 없는 데이터 베이스 라고 생각하기 쉽다.
+진짜 의미는 Not Only SQL 이다. 기존의 RDBMS의 한계를 극복하기 위해 만들어진 새로운 형태의 데이터 저장소이다. 관계형 DB가 아니므로 , RDMS처럼 고정된 스키마 및 JOIN 이 존재하지 않는다.
+
+Document ?
+Document Oriented 데이터 베이스 라는데 ? 여기서 말하는 Document란 ? 
+여기서 Document를 그냥 문서라고 번역해버리면 조금 애매하다. 문서라고 하면 보통 워드/엑셀 에 사용되는 그냥 문서가 떠오르기 때문이다. 그것과는 달리 Document는 RDMS의 record 와 비슷한 개념이다. 
+이의 데이터 구조는 한개 이상의 key-value pair 으로 이뤄져 있다. 
+MongoDB 샘플 Documnet를 확인해 보자.
+
+{
+	"_id" : ObjectId("5099703df3f4948bd2f98391"),
+	"username": "yeoandante",
+	"name" : {first: "unseo", last:"Yeo"}
+}
+
+여기서 _id, username,name 은 key 이고 그 오른쪽에 있는 값들은 value이다.
+_id 는 12bytes의 hexadecimal 값으로, 각 document의 유일함(uniqueness)을 제공한다.
+이 값의 첫 4bytes는 현재 timestamp, 다음 3bytes는 machine id , 다음 2bytes는 MongoDB 서버의 프로세스 id, 마지막 3bytes는 순차번호이다. 추가될떄마다 값이 높아진다.
+Document는 동적의 schema를 갖고있다. 같은 Collection 안에 있는 Document끼리 다른 schema를 갖고 있을 수 있는데, 쉽게말하면 서로 다른 데이터(즉 다른 key)들을 가지고 있을 수 있다.
+
+Collection ? 
+
+Collection은 MongoDB Document의 그룹이다. Document들이 Collection 내부에 위치하고 있다. RDMS의 table과 비슷한 개념이다.
+RDMS와 달리 schema를 따로 가지고 있지 않다. Document 부분 설명에 나와있듯이 각 Document들이 동적인 schema를 가지고 있기 떄문ㅇ이다.
+
+Database ?
+Database는 Collection 들의 물리적인 컨테이너이다. 각 Database는 파일 시스템에 여러 파일들로 저장된다.

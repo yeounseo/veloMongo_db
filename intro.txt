@@ -38,3 +38,35 @@ Database는 Collection 들의 물리적인 컨테이너이다. 각 Database는 �
 - 복잡한 JOIN 이 없다.
 - Deep Query ability (문서지향적 Query Language 를 사용하여 SQL 만큼 강력한 Query 성능을 제공한다.
 - 어플리케이션에서 사용되는 객체를 데이터베이스에 추가 할 때 Conversion / Mapping이 불필요하다.
+
+Mongoose 는 MongoDB 기반 ODM (Object Data Mapping) Node.js 전용 라이브러리이다. ODM은 데이터베이스와 객체지향 프로그래밍 언어 사이 호환되지 않는 데이터를 변환하는 프로그래밍 기법입니다. 즉 MongoDB 에 있는 데이터를 Application에서 JavaScript 객체로 사용 할 수 있도록 해준다.
+
+Express : 웹 프레임워크
+body-parser : 데이터 처리 미들웨어
+mongoose : MongoDB 연동 라이브러리
+
+
+Express 로 이용한 웹서버 생성
+mongoose를 사용하기 위해서 우선 book 데이터를 조회 수정 삭제 하는 간단한 RESTful 웹서버 를 작성한다.
+이 서버에서 만들 API 목록은 
+ROUTE				METHOD		DESCRIPTION
+/api/books			GET			모든 book 데이터 조회
+/api/books/:book_id		GET		_id 값으로 데이터 조회
+/api/books/author/:author  GET		author 값으로 데이터 조회
+/api/books					POST	book 데이터 생성
+/api/books/:book_id			PUT		book 데이터 수정
+/api/books/:book_id			DELETE	book 데이터 제거
+
+
+
+Schema 에서 사용되는 SchemaType은 총 8종류가 있다.
+1. String
+2. Number
+3. Date
+4. Buffer
+5. Boolean
+6. Mixed
+7. ObjectId
+8. Array
+
+// https://mongoosejs.com/docs/schematypes.html 메뉴얼
